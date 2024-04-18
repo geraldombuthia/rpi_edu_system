@@ -1,0 +1,6 @@
+[submodule "WiringPi"]
+	path = WiringPi
+	url = https://github.com/WiringPi/WiringPi.git
+[submodule "lg"]
+	path = lg
+	url = https://github.com/joan2937/lg.git

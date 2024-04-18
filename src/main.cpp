@@ -1,4 +1,5 @@
-#include <stdio.h>
+#include <cstddef>
+#include <cstdio>
 
 int main() {
     while (1) {

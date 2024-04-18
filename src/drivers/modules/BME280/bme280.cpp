@@ -1,4 +1,7 @@
-#include "bme280_i2c.h"
+#include "bme280.h"
+#include <cstddef>
+#include <unistd.h>
+#include <fcntl.h>
 
 int32_t BME280::compensate_temp(int32_t adc_T) {
     int32_t var1, var2, T;
@@ -86,7 +89,7 @@ void BME280::read_compensation_parameters() {
     dig_P4 = (int16_t)buffer[12] | ((int16_t)buffer[13] << 8);
     dig_P5 = (int16_t)buffer[14] | ((int16_t)buffer[15] << 8);
     dig_P6 = (int16_t)buffer[16] | ((int16_t)buffer[17] << 8);
-    dig_P7 = (int16_t)buffer[18] = ((int16_t)buffer[19] << 8);
+    dig_P7 = (int16_t)buffer[18] |((int16_t)buffer[19] << 8);
     dig_P8 = (int16_t)buffer[20] | ((int16_t)buffer[21] << 8);
     dig_P9 = (int16_t)buffer[22] | ((int16_t)buffer[23] << 8);
 
@@ -102,13 +105,13 @@ void BME280::read_compensation_parameters() {
 }
 
 BME280::BME280(uint8_t address) {
-    this->i2c_address = address;
+    this->i2c_addr = address;
     char *filename = (char*)"/dev/i2c-1";
     if ((i2c_fd = open(filename, O_RDWR)) < 0) {
         perror("Failed to open the i2c bus");
         exit(1);
     }
-    if (ioctl(i2c_fd, I2C_SLAVE, i2c_address) < 0) {
+    if (ioctl(i2c_fd, I2C_SLAVE, i2c_addr) < 0) {
         perror("Failed to acquire bus access and/or talk to slave");
         exit(1);
     }

@@ -20,7 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-#include "../include/MCP3008.h"
+#include "mcp3008.h"
 #include <cstdint>
 #include <lgpio.h>
 #include <stdexcept>

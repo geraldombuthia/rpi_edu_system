@@ -24,6 +24,44 @@ Select Interface Options > I2C > select yes to enable > press okay to exit
 ### Install Environment
 `sudo apt install g++ git build-essentials libi2c-dev i2c-tools`
 
+#### Install WiringPi
+```
+# fetch the source
+sudo apt install git
+git clone https://github.com/WiringPi/WiringPi.git
+cd WiringPi
+
+# build the package
+./build debian
+mv debian-template/wiringpi-3.0-1.deb .
+
+# install it
+sudo apt install ./wiringpi-3.0-1.deb
+
+```
+For Debug
+
+```
+WIRINGPI_DEBUG=1 ./my_wiringpi_program
+
+WIRINGPI_DEBUG=1 gpio readall
+
+```
+#### Install lgpio
+```
+git clone https://github.com/joan2937/lg.git
+
+cd lg
+
+make 
+
+sudo make install
+```
+
+#### Install i2c-tools
+```
+sudo apt-get install i2c-tools libi2c-dev
+```
 ## Getting started with the EDUSAT
 ### Install software
 ### Setup Application
