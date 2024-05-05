@@ -5,7 +5,10 @@ project(SquareLine_Project C)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 11)
 
-find_package(SDL2 REQUIRED SDL2)
+include(FetchContent)
+
+find_package(SDL2 REQUIRED)
+
 include_directories(
     ${SDL2_INCLUDE_DIRS}
     ${SDL2_INCLUDE_DIRS}/../
@@ -16,7 +19,14 @@ include_directories(
 )
 
 FILE(GLOB_RECURSE LVGL_Sources CONFIGURE_DEPENDS lvgl/*.c)
-FILE(GLOB_RECURSE LV_DRIVERS_Sources CONFIGURE_DEPENDS lv_drivers/*.c)
+# FILE(GLOB_RECURSE LV_DRIVERS_Sources CONFIGURE_DEPENDS lv_drivers/*.c)
+FetchContent_Declare(
+  lv_drivers
+  GIT_REPOSITORY https://github.com/lvgl/lv_drivers # replace with your repository URL
+)
+
+FetchContent_MakeAvailable(lv_drivers)
+
 FILE(GLOB_RECURSE UI_Sources CONFIGURE_DEPENDS ui/*.c)
 
 add_executable(${PROJECT_NAME} main.c ${LVGL_Sources} ${LV_DRIVERS_Sources} ${UI_Sources})

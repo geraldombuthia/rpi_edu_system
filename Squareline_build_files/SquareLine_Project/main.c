@@ -12,7 +12,7 @@
 #define SDL_MAIN_HANDLED /*To fix SDL's "undefined reference to WinMain" issue*/
 #include <SDL2/SDL.h>
 #include "lvgl/lvgl.h"
-#include "lv_drivers/sdl/sdl.h"
+#include "sdl/sdl.h"
 #include "ui/ui.h"
 
 /*********************
