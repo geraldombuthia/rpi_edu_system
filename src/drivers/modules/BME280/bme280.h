@@ -51,7 +51,10 @@ public:
         float humidity;
         float pressure;
         float altitude;
-    } measurement;
+    };
+
+    Measurement_t measurement;
+
 
     BME280(const char *i2c_bus, uint8_t i2c_addr, MODE mode = MODE::MODE_NORMAL);
     BME280(uint8_t address);
