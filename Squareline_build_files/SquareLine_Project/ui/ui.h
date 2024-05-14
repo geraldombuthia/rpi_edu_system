@@ -86,7 +86,7 @@ extern lv_obj_t * ui_VoltageValueLabel;
 extern lv_obj_t * ui_VoltageUnitLabel;
 extern lv_obj_t * ui_CurrentCont;
 extern lv_obj_t * ui_CurrentHeaderCont;
-extern lv_obj_t * ui_VoltageHeaderLabel1;
+extern lv_obj_t * ui_CurrentHeaderLabel;
 extern lv_obj_t * ui_CurrentInfoCont;
 extern lv_obj_t * ui_CurrentArc;
 extern lv_obj_t * ui_CurrentValueLabel;
@@ -101,6 +101,7 @@ extern lv_obj_t * ui_AltitudeUnitLabel1;
 extern lv_obj_t * ui_GyroInfoCont;
 extern lv_obj_t * ui_PressureValueLabel1;
 extern lv_obj_t * ui_PressureUnitLabel1;
+extern lv_obj_t * ui_SerialSelector;
 extern lv_obj_t * ui____initial_actions0;
 
 

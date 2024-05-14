@@ -1,0 +1,8 @@
+# ninja log v5
+0	189	1714916335452218237	CMakeFiles/my_executable.dir/src/drivers/modules/DHT11/dht11.cpp.o	8d7d29690d73b322
+1	760	1714916336024217194	CMakeFiles/my_executable.dir/src/drivers/modules/HMC5883L/hmc5883l.cpp.o	d77108f6affcfe48
+2	1651	1714916336916215566	CMakeFiles/my_executable.dir/src/drivers/modules/MPU6050/mpu6050.cpp.o	da46c9a22d73739d
+1	866	1714916336128217004	CMakeFiles/my_executable.dir/src/drivers/modules/MCP3008/mcp3008.cpp.o	e94dfce721876636
+0	871	1714916336132216997	CMakeFiles/my_executable.dir/src/drivers/modules/BME280/bme280.cpp.o	cc29804093807438
+3	1469	1714916336732215902	CMakeFiles/my_executable.dir/src/main.cpp.o	4e02adb04005d3ce
+1651	1799	1714916337060215303	my_executable	778b33bdc100a7e4

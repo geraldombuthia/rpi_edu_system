@@ -421,6 +421,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_flex_flow(ui_OverviewBottomRowCont, LV_FLEX_FLOW_ROW);
     lv_obj_set_flex_align(ui_OverviewBottomRowCont, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
     lv_obj_clear_flag(ui_OverviewBottomRowCont, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_border_side(ui_OverviewBottomRowCont, LV_BORDER_SIDE_NONE, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_left(ui_OverviewBottomRowCont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_right(ui_OverviewBottomRowCont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_top(ui_OverviewBottomRowCont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -443,7 +444,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_height(ui_GPSCont, lv_pct(60));
     lv_obj_set_align(ui_GPSCont, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_GPSCont, LV_FLEX_FLOW_COLUMN);
-    lv_obj_set_flex_align(ui_GPSCont, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
+    lv_obj_set_flex_align(ui_GPSCont, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_CENTER);
     lv_obj_clear_flag(ui_GPSCont, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_border_side(ui_GPSCont, LV_BORDER_SIDE_NONE, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_left(ui_GPSCont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -535,7 +536,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_height(ui_UVCont, lv_pct(60));
     lv_obj_set_align(ui_UVCont, LV_ALIGN_CENTER);
     lv_obj_set_flex_flow(ui_UVCont, LV_FLEX_FLOW_COLUMN);
-    lv_obj_set_flex_align(ui_UVCont, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
+    lv_obj_set_flex_align(ui_UVCont, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_START);
     lv_obj_clear_flag(ui_UVCont, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_border_side(ui_UVCont, LV_BORDER_SIDE_NONE, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_pad_left(ui_UVCont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -694,11 +695,11 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_style_radius(ui_CurrentHeaderCont, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_side(ui_CurrentHeaderCont, LV_BORDER_SIDE_BOTTOM, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_VoltageHeaderLabel1 = lv_label_create(ui_CurrentHeaderCont);
-    lv_obj_set_width(ui_VoltageHeaderLabel1, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_VoltageHeaderLabel1, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_align(ui_VoltageHeaderLabel1, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_VoltageHeaderLabel1, "Voltage");
+    ui_CurrentHeaderLabel = lv_label_create(ui_CurrentHeaderCont);
+    lv_obj_set_width(ui_CurrentHeaderLabel, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_CurrentHeaderLabel, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_CurrentHeaderLabel, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_CurrentHeaderLabel, "Current");
 
     ui_CurrentInfoCont = lv_obj_create(ui_CurrentCont);
     lv_obj_set_width(ui_CurrentInfoCont, lv_pct(100));
@@ -829,5 +830,16 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_align(ui_PressureUnitLabel1, LV_ALIGN_CENTER);
     lv_label_set_text(ui_PressureUnitLabel1, "Pa");
     lv_obj_set_style_text_font(ui_PressureUnitLabel1, &lv_font_montserrat_8, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_SerialSelector = lv_dropdown_create(ui_Screen1);
+    lv_dropdown_set_options(ui_SerialSelector, "ttyUSB0\nttyUSB1\nttyUSB2\nttyUSB3\nttyUSB4\nttyUSB5");
+    lv_obj_set_width(ui_SerialSelector, 150);
+    lv_obj_set_height(ui_SerialSelector, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_SerialSelector, -299);
+    lv_obj_set_y(ui_SerialSelector, -33);
+    lv_obj_set_align(ui_SerialSelector, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_SerialSelector, LV_OBJ_FLAG_SCROLL_ON_FOCUS);     /// Flags
+
+
 
 }

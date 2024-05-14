@@ -1,0 +1,3 @@
+/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/Squareline_build_files/SquareLine_Project/build/_deps/lv_drivers-subbuild/CMakeFiles/lv_drivers-populate.dir
+/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/Squareline_build_files/SquareLine_Project/build/_deps/lv_drivers-subbuild/CMakeFiles/edit_cache.dir
+/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/Squareline_build_files/SquareLine_Project/build/_deps/lv_drivers-subbuild/CMakeFiles/rebuild_cache.dir

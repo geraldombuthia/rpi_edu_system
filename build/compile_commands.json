@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/build",
+  "command": "/usr/bin/g++ -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/BME280 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/DHT11 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/HMC5883L -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MCP3008 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MPU6050 -Wall -Wextra -O2 -g -o CMakeFiles/my_executable.dir/src/drivers/modules/BME280/bme280.cpp.o -c /home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/BME280/bme280.cpp",
+  "file": "/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/BME280/bme280.cpp"
+},
+{
+  "directory": "/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/build",
+  "command": "/usr/bin/g++ -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/BME280 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/DHT11 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/HMC5883L -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MCP3008 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MPU6050 -Wall -Wextra -O2 -g -o CMakeFiles/my_executable.dir/src/drivers/modules/DHT11/dht11.cpp.o -c /home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/DHT11/dht11.cpp",
+  "file": "/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/DHT11/dht11.cpp"
+},
+{
+  "directory": "/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/build",
+  "command": "/usr/bin/g++ -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/BME280 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/DHT11 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/HMC5883L -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MCP3008 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MPU6050 -Wall -Wextra -O2 -g -o CMakeFiles/my_executable.dir/src/drivers/modules/HMC5883L/hmc5883l.cpp.o -c /home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/HMC5883L/hmc5883l.cpp",
+  "file": "/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/HMC5883L/hmc5883l.cpp"
+},
+{
+  "directory": "/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/build",
+  "command": "/usr/bin/g++ -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/BME280 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/DHT11 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/HMC5883L -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MCP3008 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MPU6050 -Wall -Wextra -O2 -g -o CMakeFiles/my_executable.dir/src/drivers/modules/MCP3008/mcp3008.cpp.o -c /home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MCP3008/mcp3008.cpp",
+  "file": "/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MCP3008/mcp3008.cpp"
+},
+{
+  "directory": "/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/build",
+  "command": "/usr/bin/g++ -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/BME280 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/DHT11 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/HMC5883L -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MCP3008 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MPU6050 -Wall -Wextra -O2 -g -o CMakeFiles/my_executable.dir/src/drivers/modules/MPU6050/mpu6050.cpp.o -c /home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MPU6050/mpu6050.cpp",
+  "file": "/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MPU6050/mpu6050.cpp"
+},
+{
+  "directory": "/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/build",
+  "command": "/usr/bin/g++ -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/BME280 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/DHT11 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/HMC5883L -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MCP3008 -I/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/drivers/modules/MPU6050 -Wall -Wextra -O2 -g -o CMakeFiles/my_executable.dir/src/main.cpp.o -c /home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/main.cpp",
+  "file": "/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/src/main.cpp"
+}
+]

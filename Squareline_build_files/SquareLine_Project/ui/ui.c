@@ -80,7 +80,7 @@ lv_obj_t * ui_VoltageValueLabel;
 lv_obj_t * ui_VoltageUnitLabel;
 lv_obj_t * ui_CurrentCont;
 lv_obj_t * ui_CurrentHeaderCont;
-lv_obj_t * ui_VoltageHeaderLabel1;
+lv_obj_t * ui_CurrentHeaderLabel;
 lv_obj_t * ui_CurrentInfoCont;
 lv_obj_t * ui_CurrentArc;
 lv_obj_t * ui_CurrentValueLabel;
@@ -95,6 +95,7 @@ lv_obj_t * ui_AltitudeUnitLabel1;
 lv_obj_t * ui_GyroInfoCont;
 lv_obj_t * ui_PressureValueLabel1;
 lv_obj_t * ui_PressureUnitLabel1;
+lv_obj_t * ui_SerialSelector;
 lv_obj_t * ui____initial_actions0;
 
 ///////////////////// TEST LVGL SETTINGS ////////////////////

@@ -1,0 +1,15 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The download step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+method=git
+command=/usr/bin/cmake;-P;/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/Squareline_build_files/SquareLine_Project/build/_deps/lv_drivers-subbuild/lv_drivers-populate-prefix/tmp/lv_drivers-populate-gitclone.cmake
+source_dir=/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/Squareline_build_files/SquareLine_Project/build/_deps/lv_drivers-src
+work_dir=/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/Squareline_build_files/SquareLine_Project/build/_deps
+repository=https://github.com/lvgl/lv_drivers
+remote=origin
+init_submodules=TRUE
+recurse_submodules=--recursive
+submodules=
+CMP0097=NEW
+
