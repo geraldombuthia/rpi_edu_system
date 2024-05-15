@@ -2,6 +2,7 @@
 #include <cstdio>
 #include "mpu6050.h"
 #include "bme280.h"
+#include "mcp3008.h"
 #include <wiringPi.h>
 
 
@@ -75,6 +76,13 @@ int main()
     // Call the measure method to get the measurements
     BME280::Measurement_t measurements = sensor.measure();
 
+    // Create an instance of the MCP3008 class
+    MCP3008Lib::MCP3008 mcp3008(0, 0, 1350000, SPI_MODE_0);
+
+    mcp3008.connect();
+
+
+
     int ret = 0;
 
     if (wiringPiSetup() == -1)
@@ -90,6 +98,8 @@ int main()
     {
         mpu6050.getGyro(&roll, &pitch, &yaw);
         mpu6050.getAccel(&ax, &ay, &az);
+
+        unsigned short channel1 = mcp3008.read(0, MCP3008Lib::Mode::SINGLE);
         printf("Roll: %f, Pitch: %f, Yaw: %f\n", roll, pitch, yaw);
         printf("Ax: %f, Ay: %f, Az: %f\n\n", ax, ay, az);
 
@@ -99,5 +109,7 @@ int main()
         printf("Humidity: %.1f%%\nTemperature: %.1f C\n", dht_humidity, dht_temp);
 
         printf("Temperature: %.2f C Pressure: %.2f hPa Humidity: %.2f %% Altitude: %.2f m\n\n", temperature, pressure, humidity, altitude);
+
+        printf("Channel 1: %d\n", channel1);
     }
 }
