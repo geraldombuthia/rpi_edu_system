@@ -1,3 +1,0 @@
-/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/build/CMakeFiles/my_executable.dir
-/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/build/CMakeFiles/edit_cache.dir
-/home/gerald/systems/Edusat-RPI-Dev/rpi_edu_system/build/CMakeFiles/rebuild_cache.dir
