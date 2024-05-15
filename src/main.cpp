@@ -85,7 +85,8 @@ int main()
     int ret = 0;
 
     if (wiringPiSetup() == -1)
-        exit(1);
+        // exit(1);
+        printf("WirinPi setup failed\n");
 
     // Now you can access the measurements
 
