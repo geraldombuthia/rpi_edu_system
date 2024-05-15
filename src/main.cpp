@@ -7,7 +7,7 @@
 
 
 #define MAXTIMINGS	85
-#define DHTPIN		7
+#define DHTPIN		22
 
 
 int		dht11_dat[5] = { 0, 0, 0, 0, 0 };
@@ -93,7 +93,7 @@ int main()
         printf("Roll: %f, Pitch: %f, Yaw: %f\n", roll, pitch, yaw);
         printf("Ax: %f, Ay: %f, Az: %f\n\n", ax, ay, az);
 
-        ret = read_dht11_dat();
+        read_dht11_dat();
         delay(100);
 
         printf("Humidity: %.1f%%\nTemperature: %.1f C\n", dht_humidity, dht_temp);
