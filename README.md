@@ -22,7 +22,7 @@ Select Interface Options > I2C > select yes to enable > press okay to exit
 `sudo apt upgrade`
 
 ### Install Environment
-`sudo apt install g++ git build-essentials libi2c-dev i2c-tools`
+`sudo apt install g++ git cmake Ninja build-essentials libi2c-dev i2c-tools`
 
 #### Install WiringPi
 ```
@@ -62,7 +62,22 @@ sudo make install
 ```
 sudo apt-get install i2c-tools libi2c-dev
 ```
+
+### BUILD
+```
+mkdir build
+
+
+cd build
+
+cmake ..
+
+
+make
+```
 ## Getting started with the EDUSAT
+
+
 ### Install software
 ### Setup Application
 
