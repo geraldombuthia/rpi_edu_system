@@ -106,10 +106,6 @@ int main()
 
         read_dht11_dat();
 
-        // double heading = getCurrentHeading(compass);
-
-
-        // printf("Heading: %f\n", heading);
         delay(100);
 
         printf("Humidity: %.1f%%\nTemperature: %.1f C\n", dht_humidity, dht_temp);

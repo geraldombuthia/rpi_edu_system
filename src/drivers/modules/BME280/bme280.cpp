@@ -58,7 +58,7 @@ void BME280::write_register(uint8_t reg, uint8_t data) {
     uint8_t buf[2] = {reg, data};
     if (write(i2c_fd, buf, 2) != 2) {
         perror("Failed to write to the i2c bus");
-        exit(1);
+        // //exit(1);
     }
     usleep(10000); // Delay required after write operation
 }
@@ -66,11 +66,11 @@ void BME280::write_register(uint8_t reg, uint8_t data) {
 void BME280::read_registers(uint8_t reg, uint8_t *buf, uint16_t len) {
     if (write(i2c_fd, &reg, 1) != 1) {
         perror("Failed to write to the i2c bus");
-        exit(1);
+        //exit(1);
     }
     if (read(i2c_fd, buf, len) != len) {
         perror("Failed to read from the i2c bus");
-        exit(1);
+        //exit(1);
     }
     usleep(10000); // Delay required after read operation
 }
@@ -109,11 +109,11 @@ BME280::BME280(uint8_t address) {
     char *filename = (char*)"/dev/i2c-1";
     if ((i2c_fd = open(filename, O_RDWR)) < 0) {
         perror("Failed to open the i2c bus");
-        exit(1);
+        //exit(1);
     }
     if (ioctl(i2c_fd, I2C_SLAVE, i2c_addr) < 0) {
         perror("Failed to acquire bus access and/or talk to slave");
-        exit(1);
+        //exit(1);
     }
     read_compensation_parameters();
     write_register(0xF2, 0x01); // Set humidity oversampling to x1
