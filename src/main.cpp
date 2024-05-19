@@ -3,7 +3,7 @@
 #include "mpu6050.h"
 #include "bme280.h"
 #include "mcp3008.h"
-#include "hmc5883l.h"
+// #include "hmc5883l.h"
 #include <wiringPi.h>
 
 #define MAXTIMINGS 85
@@ -80,7 +80,7 @@ int main()
     mcp3008.connect();
 
     // Create an instance of the HMC5883L class
-    HMC5883L compass = NULL;
+    // HMC5883L compass = NULL;
 
     int ret = 0;
 
@@ -109,7 +109,7 @@ int main()
         double heading = getCurrentHeading(compass);
 
 
-        printf("Heading: %f\n", heading);
+        // printf("Heading: %f\n", heading);
         delay(100);
 
         printf("Humidity: %.1f%%\nTemperature: %.1f C\n", dht_humidity, dht_temp);
