@@ -1,126 +1,47 @@
-// MIT License
-//
-// Copyright (c) 2021 Daniel Robertson
-//
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
-//
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
+#include <iostream>
+#include <wiringPi.h>
+#include <wiringPiSPI.h>
 
-#include "mcp3008.h"
-#include <cstdint>
-#include <lgpio.h>
-#include <stdexcept>
+#define SPI_CHANNEL 0
+#define SPI_SPEED   1000000  // 1 MHz
 
-namespace MCP3008Lib {
+class MCP3008 {
+public:
+    MCP3008(int channel = SPI_CHANNEL, int speed = SPI_SPEED) : spi_channel(channel), spi_speed(speed) {
+        if (wiringPiSetup() == -1) {
+            throw std::runtime_error("Failed to setup wiringPi");
+        }
 
-MCP3008::MCP3008(
-    const int dev,
-    const int channel,
-    const int baud,
-    const int flags) noexcept :
-        _handle(-1),
-        _dev(dev),
-        _channel(channel),
-        _baud(baud),
-        _flags(flags) {
-}
-
-MCP3008::~MCP3008() {
-
-    try {
-        this->disconnect();
-    }
-    catch(...) {
-        //prevent propagation
+        if (wiringPiSPISetup(spi_channel, spi_speed) == -1) {
+            throw std::runtime_error("Failed to setup SPI");
+        }
     }
 
-}
+    int readADC(int channel) {
+        if (channel < 0 || channel > 7) {
+            throw std::invalid_argument("Channel must be between 0 and 7");
+        }
 
-void MCP3008::connect() {
+        unsigned char buffer[3];
+        buffer[0] = 1;  // Start bit
+        buffer[1] = (8 + channel) << 4;  // Single-ended mode, channel (0-7)
+        buffer[2] = 0;  // Don't care byte
 
-    if(this->_handle >= 0) {
-        return;
+        wiringPiSPIDataRW(spi_channel, buffer, 3);
+
+        int result = ((buffer[1] & 3) << 8) + buffer[2];
+        return result;
     }
 
-    const auto handle = ::lgSpiOpen(
-        this->_dev,
-        this->_channel,
-        this->_baud,
-        this->_flags);
-
-    if(handle < 0) {
-        throw std::runtime_error("failed to connect spi device");
+    void readAllChannels() {
+        for (int channel = 0; channel < 8; channel++) {
+            int value = readADC(channel);
+            std::cout << "Channel " << channel << ": " << value << std::endl;
+        }
     }
 
-    this->_handle = handle;
-
-}
-
-void MCP3008::disconnect() {
-
-    if(this->_handle < 0) {
-        return;
-    }
-
-    if(::lgSpiClose(this->_handle) != 0) {
-        throw std::runtime_error("failed to disconnect spi device");
-    }
-
-    this->_handle = -1;
-
-}
-
-unsigned short MCP3008::read(const std::uint8_t channel, const Mode m) const {
-
-    //control bits
-    //first bit is single or differential mode
-    //next three bits are channel selection
-    //last four bits are ignored
-    const std::uint8_t ctrl =
-        (static_cast<std::uint8_t>(m) << 7) |
-         static_cast<std::uint8_t>((channel & 0b00000111) << 4)
-        ;
-
-    const std::uint8_t byteCount = 3;
-
-    const std::uint8_t txData[byteCount] = {
-        0b00000001, //seven leading zeros and start bit
-        ctrl,       //sgl/diff (mode), d2, d1, d0, 4x "don't care" bits
-        0b00000000  //8x "don't care" bits
-        };
-
-    std::uint8_t rxData[byteCount]{0};
-
-    const auto bytesTransferred = ::lgSpiXfer(
-        this->_handle,
-        reinterpret_cast<const char*>(txData),
-        reinterpret_cast<char*>(rxData),
-        byteCount);
-
-    if(bytesTransferred != byteCount) {
-        throw std::runtime_error("spi transfer failed");
-    }
-
-    //first 14 bits are ignored
-    //no need to AND with 0x3ff this way
-    return 
-        ((static_cast<unsigned short>(rxData[1]) & 0b00000011) << 8) |
-         (static_cast<unsigned short>(rxData[2]) & 0b11111111);
-
-}
-
+private:
+    int spi_channel;
+    int spi_speed;
 };
+

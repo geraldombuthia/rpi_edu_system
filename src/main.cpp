@@ -75,9 +75,7 @@ int main()
     BME280::Measurement_t measurements = sensor.measure();
 
     // Create an instance of the MCP3008 class
-    MCP3008Lib::MCP3008 mcp3008(0, 0, 1350000, SPI_MODE_0);
-
-    mcp3008.connect();
+    MCP3008 adc;
 
     // Create an instance of the HMC5883L class
     // HMC5883L compass = NULL;
@@ -99,8 +97,9 @@ int main()
 
         mpu6050.getGyro(&roll, &pitch, &yaw);
         mpu6050.getAccel(&ax, &ay, &az);
+        
+        adc.readAllChannels();
 
-        unsigned short channel1 = mcp3008.read(0, MCP3008Lib::Mode::SINGLE);
         printf("Roll: %f, Pitch: %f, Yaw: %f\n", roll, pitch, yaw);
         printf("Ax: %f, Ay: %f, Az: %f\n\n", ax, ay, az);
 
@@ -112,6 +111,5 @@ int main()
 
         printf("Temperature: %.2f C Pressure: %.2f hPa Humidity: %.2f %% Altitude: %.2f m\n\n", temperature, pressure, humidity, altitude);
 
-        printf("Channel 1: %d\n\n", channel1);
     }
 }
