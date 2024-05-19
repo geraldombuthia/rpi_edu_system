@@ -106,7 +106,7 @@ int main()
 
         read_dht11_dat();
 
-        double heading = getCurrentHeading(compass);
+        // double heading = getCurrentHeading(compass);
 
 
         // printf("Heading: %f\n", heading);
