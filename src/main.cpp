@@ -3,7 +3,7 @@
 #include "mpu6050.h"
 #include "bme280.h"
 #include "mcp3008.h"
-// #include "hmc5883l.h"
+#include "hmc5883l.h"
 #include <wiringPi.h>
 
 #define MAXTIMINGS 85
@@ -12,6 +12,11 @@
 int dht11_dat[5] = {0, 0, 0, 0, 0};
 double dht_temp;
 double dht_humidity;
+HMC5883L compass; //HMC5883l object
+double heading_d;
+char heading[20];
+
+
 
 int read_dht11_dat()
 {
@@ -62,6 +67,7 @@ int read_dht11_dat()
         return (0);
 }
 
+      
 int main()
 {
     float roll, pitch, yaw;
@@ -100,6 +106,9 @@ int main()
         
         adc.readAllChannels();
 
+        heading_d = getCurrentHeading(compass); //get compass heading
+
+        printf("Heading: %f\n", heading_d);
         printf("Roll: %f, Pitch: %f, Yaw: %f\n", roll, pitch, yaw);
         printf("Ax: %f, Ay: %f, Az: %f\n\n", ax, ay, az);
 
