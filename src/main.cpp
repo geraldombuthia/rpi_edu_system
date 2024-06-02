@@ -110,31 +110,32 @@ int main()
 
         // Read
         hmc5883l_read(&hmc5883l);
+        
+        read_dht11_dat();
 
         // Print results
-        printf("X, Y, Z:\t%f | %f | %f",
+        printf("X: %f Y:%f Z:%f\n",
                hmc5883l._data.x,
                hmc5883l._data.y,
                hmc5883l._data.z);
 
-        printf("Scaled:\t%f | %f | %f",
+        printf("Scaled:\t%f | %f | %f\n",
                hmc5883l._data.x_scaled,
                hmc5883l._data.y_scaled,
                hmc5883l._data.z_scaled);
 
-        printf("Orientation:\tDeg: %f | Rad: %f",
+        printf("Orientation:\tDeg: %f | Rad: %f\n",
                hmc5883l._data.orientation_deg,
                hmc5883l._data.orientation_rad);
 
         printf("Roll: %f, Pitch: %f, Yaw: %f\n", roll, pitch, yaw);
         printf("Ax: %f, Ay: %f, Az: %f\n\n", ax, ay, az);
 
-        read_dht11_dat();
-
-        delay(100);
 
         printf("Humidity: %.1f%%\nTemperature: %.1f C\n", dht_humidity, dht_temp);
 
         printf("Temperature: %.2f C Pressure: %.2f hPa Humidity: %.2f %% Altitude: %.2f m\n\n", temperature, pressure, humidity, altitude);
+
+        delay(1000); // To be removed later on
     }
 }
