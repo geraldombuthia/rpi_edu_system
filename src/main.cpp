@@ -12,11 +12,6 @@
 int dht11_dat[5] = {0, 0, 0, 0, 0};
 double dht_temp;
 double dht_humidity;
-HMC5883L compass; //HMC5883l object
-double heading_d;
-char heading[20];
-
-
 
 int read_dht11_dat()
 {
@@ -67,7 +62,6 @@ int read_dht11_dat()
         return (0);
 }
 
-      
 int main()
 {
     float roll, pitch, yaw;
@@ -83,10 +77,11 @@ int main()
     // Create an instance of the MCP3008 class
     MCP3008 adc;
 
+    HMC5883L hmc5883l;
+
+
     // Create an instance of the HMC5883L class
     // HMC5883L compass = NULL;
-
-    int ret = 0;
 
     if (wiringPiSetup() == -1)
         // exit(1);
@@ -103,12 +98,34 @@ int main()
 
         mpu6050.getGyro(&roll, &pitch, &yaw);
         mpu6050.getAccel(&ax, &ay, &az);
-        
+
         adc.readAllChannels();
 
-        heading_d = getCurrentHeading(compass); //get compass heading
+        // Initialize
+        if (hmc5883l_init(&hmc5883l) != HMC5883L_OKAY)
+        {
+            fprintf(stderr, "Error: %d\n", hmc5883l._error);
+            // exit(1);
+        }
 
-        printf("Heading: %f\n", heading_d);
+        // Read
+        hmc5883l_read(&hmc5883l);
+
+        // Print results
+        printf("X, Y, Z:\t%f | %f | %f",
+               hmc5883l._data.x,
+               hmc5883l._data.y,
+               hmc5883l._data.z);
+
+        printf("Scaled:\t%f | %f | %f",
+               hmc5883l._data.x_scaled,
+               hmc5883l._data.y_scaled,
+               hmc5883l._data.z_scaled);
+
+        printf("Orientation:\tDeg: %f | Rad: %f",
+               hmc5883l._data.orientation_deg,
+               hmc5883l._data.orientation_rad);
+
         printf("Roll: %f, Pitch: %f, Yaw: %f\n", roll, pitch, yaw);
         printf("Ax: %f, Ay: %f, Az: %f\n\n", ax, ay, az);
 
@@ -119,6 +136,5 @@ int main()
         printf("Humidity: %.1f%%\nTemperature: %.1f C\n", dht_humidity, dht_temp);
 
         printf("Temperature: %.2f C Pressure: %.2f hPa Humidity: %.2f %% Altitude: %.2f m\n\n", temperature, pressure, humidity, altitude);
-
     }
 }
