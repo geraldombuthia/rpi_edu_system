@@ -26,7 +26,7 @@ int main()
         exit(1);
     }
     __u8 reg = 0xF7;
-	__u8 reg1 = 0xFE;
+    __u8 reg1 = 0xFE;
     // replace with register addresses and data
     buf[0] = reg;
 

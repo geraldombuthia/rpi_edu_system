@@ -62,7 +62,17 @@ sudo make install
 ```
 sudo apt-get install i2c-tools libi2c-dev
 ```
+#### Install LVGL
+```
+git clone https://github.com/lvgl/lvgl.git
 
+cd lvgl
+
+git fetch origin v8.3.6
+
+git checkout tags/v8.3.6
+
+```
 ### BUILD
 ```
 mkdir build

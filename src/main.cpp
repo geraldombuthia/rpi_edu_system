@@ -110,7 +110,7 @@ int main()
 
         // Read
         hmc5883l_read(&hmc5883l);
-        
+
         read_dht11_dat();
 
         // Print results
@@ -124,7 +124,7 @@ int main()
                hmc5883l._data.y_scaled,
                hmc5883l._data.z_scaled);
 
-        printf("Orientation:\tDeg: %f | Rad: %f\n",
+        printf("Orientation:Deg: %f | Rad: %f\n",
                hmc5883l._data.orientation_deg,
                hmc5883l._data.orientation_rad);
 

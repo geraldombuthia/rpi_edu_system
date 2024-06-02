@@ -21,10 +21,33 @@ set(SOURCES
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -O2")
 
+set(APP_SOURCE_DIR ${APP_CMAKE_DIR})
 
+find_package(SDL2 REQUIRED)
+
+include(FetchContent)
 
 add_executable(my_executable ${SOURCES})
 
+# Include the SDL headers
+include_directories(
+    ${SDL_INCLUDE_DIRS}
+    include/lvgl
+    ${APP_SOURCE_DIR}/lvgl
+    )
+
+FetchContent_Declare(lv_drivers
+                     GIT_REPOSITORY https://github.com/lvgl/lv_drivers)
+FetchContent_MakeAvailable(lv_drivers)
+
+set(APP_LIBRARIES
+    lvgl::lvgl
+    lvgl::drivers
+)
+
+add_subdirectory(
+    lvgl
+)
 target_include_directories(my_executable PRIVATE 
         src/drivers/modules/BME280 
         src/drivers/modules/DHT11 

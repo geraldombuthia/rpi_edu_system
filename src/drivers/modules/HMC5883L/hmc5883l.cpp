@@ -4,21 +4,21 @@
 /* Set error flag in HMC5883L object */
 void hmc5883l_error(HMC5883L *hmc5883l, char code) {
     switch(code) {
-        case HMC5883L_ERR_SETUP:
-            hmc5883l->_error = HMC5883L_ERR_SETUP;
-            break;
+    case HMC5883L_ERR_SETUP:
+        hmc5883l->_error = HMC5883L_ERR_SETUP;
+        break;
 
-        case HMC5883L_ERR_SELFTEST:
-            hmc5883l->_error = HMC5883L_ERR_SELFTEST;
-            break;
+    case HMC5883L_ERR_SELFTEST:
+        hmc5883l->_error = HMC5883L_ERR_SELFTEST;
+        break;
 
-        case HMC5883L_ERR_SELFTEST_RUNS:
-            hmc5883l->_error = HMC5883L_ERR_SELFTEST_RUNS;
-            break;
+    case HMC5883L_ERR_SELFTEST_RUNS:
+        hmc5883l->_error = HMC5883L_ERR_SELFTEST_RUNS;
+        break;
 
-        default:
-            hmc5883l->_error = HMC5883L_ERR_UNKNOWN;
-            break;
+    default:
+        hmc5883l->_error = HMC5883L_ERR_UNKNOWN;
+        break;
     }
 }
 
@@ -66,13 +66,13 @@ void hmc5883l_read(HMC5883L *hmc5883l) {
 
         /* Magnetic field calculation */
         hmc5883l->_magnetic.x =
-          hmc5883l->_data.x / _hmc5883l_Gauss_LSB_XY * HMC5883L_CONST_GAUSS2MTESLA;
+            hmc5883l->_data.x / _hmc5883l_Gauss_LSB_XY * HMC5883L_CONST_GAUSS2MTESLA;
 
         hmc5883l->_magnetic.y =
-          hmc5883l->_data.y / _hmc5883l_Gauss_LSB_XY * HMC5883L_CONST_GAUSS2MTESLA;
+            hmc5883l->_data.y / _hmc5883l_Gauss_LSB_XY * HMC5883L_CONST_GAUSS2MTESLA;
 
         hmc5883l->_magnetic.z =
-          hmc5883l->_data.z / _hmc5883l_Gauss_LSB_Z * HMC5883L_CONST_GAUSS2MTESLA;
+            hmc5883l->_data.z / _hmc5883l_Gauss_LSB_Z * HMC5883L_CONST_GAUSS2MTESLA;
 
         /* Calculate heading */
         heading = atan2(hmc5883l->_magnetic.y, hmc5883l->_magnetic.x);
@@ -98,57 +98,57 @@ void hmc5883l_set_gain(HMC5883L *hmc5883l, unsigned char gain) {
     hmc5883l->_gain = gain;
 
     switch(gain) {
-        /* +/- 1.3 gauss */
-        case HMC5883L_GAIN_1_3:
-            _hmc5883l_Gauss_LSB_XY = 1090;
-            _hmc5883l_Gauss_LSB_Z  = 980;
-            hmc5883l->_scale = 0.92;
-            break;
+    /* +/- 1.3 gauss */
+    case HMC5883L_GAIN_1_3:
+        _hmc5883l_Gauss_LSB_XY = 1090;
+        _hmc5883l_Gauss_LSB_Z  = 980;
+        hmc5883l->_scale = 0.92;
+        break;
 
-        /* +/- 1.9 gauss */
-        case HMC5883L_GAIN_1_9:
-            _hmc5883l_Gauss_LSB_XY = 820;
-            _hmc5883l_Gauss_LSB_Z  = 760;
-            hmc5883l->_scale = 1.22;
-            break;
+    /* +/- 1.9 gauss */
+    case HMC5883L_GAIN_1_9:
+        _hmc5883l_Gauss_LSB_XY = 820;
+        _hmc5883l_Gauss_LSB_Z  = 760;
+        hmc5883l->_scale = 1.22;
+        break;
 
-        /* +/- 2.5 gauss */
-        case HMC5883L_GAIN_2_5:
-            _hmc5883l_Gauss_LSB_XY = 660;
-            _hmc5883l_Gauss_LSB_Z  = 600;
-            hmc5883l->_scale = 1.52;
-            break;
+    /* +/- 2.5 gauss */
+    case HMC5883L_GAIN_2_5:
+        _hmc5883l_Gauss_LSB_XY = 660;
+        _hmc5883l_Gauss_LSB_Z  = 600;
+        hmc5883l->_scale = 1.52;
+        break;
 
-        /* +/- 4.0 gauss */
-        case HMC5883L_GAIN_4_0:
-            _hmc5883l_Gauss_LSB_XY = 440;
-            _hmc5883l_Gauss_LSB_Z  = 400;
-            hmc5883l->_scale = 2.27;
-            break;
+    /* +/- 4.0 gauss */
+    case HMC5883L_GAIN_4_0:
+        _hmc5883l_Gauss_LSB_XY = 440;
+        _hmc5883l_Gauss_LSB_Z  = 400;
+        hmc5883l->_scale = 2.27;
+        break;
 
-        /* +/- 4.7 gauss */
-        case HMC5883L_GAIN_4_7:
-            _hmc5883l_Gauss_LSB_XY = 390;
-            _hmc5883l_Gauss_LSB_Z  = 255;
-            hmc5883l->_scale = 2.56;
-            break;
+    /* +/- 4.7 gauss */
+    case HMC5883L_GAIN_4_7:
+        _hmc5883l_Gauss_LSB_XY = 390;
+        _hmc5883l_Gauss_LSB_Z  = 255;
+        hmc5883l->_scale = 2.56;
+        break;
 
-        /* +/- 5.6 gauss */
-        case HMC5883L_GAIN_5_6:
-            _hmc5883l_Gauss_LSB_XY = 330;
-            _hmc5883l_Gauss_LSB_Z  = 295;
-            hmc5883l->_scale = 3.03;
-            break;
+    /* +/- 5.6 gauss */
+    case HMC5883L_GAIN_5_6:
+        _hmc5883l_Gauss_LSB_XY = 330;
+        _hmc5883l_Gauss_LSB_Z  = 295;
+        hmc5883l->_scale = 3.03;
+        break;
 
-        /* +/- 8.1 gauss */
-        case HMC5883L_GAIN_8_1:
-            _hmc5883l_Gauss_LSB_XY = 230;
-            _hmc5883l_Gauss_LSB_Z  = 205;
-            hmc5883l->_scale = 4.35;
-            break;
+    /* +/- 8.1 gauss */
+    case HMC5883L_GAIN_8_1:
+        _hmc5883l_Gauss_LSB_XY = 230;
+        _hmc5883l_Gauss_LSB_Z  = 205;
+        hmc5883l->_scale = 4.35;
+        break;
 
-        default:
-            break;
+    default:
+        break;
     }
 }
 
@@ -174,8 +174,8 @@ char hmc5883l_self_test(HMC5883L *hmc5883l) {
 
         /* Check the values */
         if( hmc5883l->_data.x < limit_low ||  hmc5883l->_data.x > limit_high ||
-            hmc5883l->_data.y < limit_low ||  hmc5883l->_data.y > limit_high ||
-            hmc5883l->_data.z < limit_low ||  hmc5883l->_data.z > limit_high )
+                hmc5883l->_data.y < limit_low ||  hmc5883l->_data.y > limit_high ||
+                hmc5883l->_data.z < limit_low ||  hmc5883l->_data.z > limit_high )
         {
             if( hmc5883l->_gain < HMC5883L_GAIN_8_1 ) {
                 hmc5883l_set_gain(hmc5883l, (hmc5883l->_gain + 0x20));
@@ -218,7 +218,7 @@ char hmc5883l_init(HMC5883L *hmc5883l) {
     /* The I2C interface descriptor */
     hmc5883l->_fd = wiringPiI2CSetup(HMC5883L_I2C_ADDRESS);
 
-    if( hmc5883l->_fd == -1 ){
+    if( hmc5883l->_fd == -1 ) {
         hmc5883l_error(hmc5883l, HMC5883L_ERR_SETUP);
         return HMC5883L_ERROR;
     }

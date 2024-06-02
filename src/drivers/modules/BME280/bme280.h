@@ -41,7 +41,9 @@ private:
         unsigned int osrs_t : 3; ///< temperature oversampling
         unsigned int osrs_p : 3; ///< pressure oversampling
         unsigned int mode : 2;   ///< device mode
-        unsigned int get() { return (osrs_t << 5) | (osrs_p << 2) | mode; }
+        unsigned int get() {
+            return (osrs_t << 5) | (osrs_p << 2) | mode;
+        }
     } measurement_reg;
 
 public:

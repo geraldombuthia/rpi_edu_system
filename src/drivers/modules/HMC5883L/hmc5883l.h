@@ -104,7 +104,7 @@ typedef struct {
         _min_value;
 
     unsigned char _gain,
-                  _error;
+             _error;
 
     char _name[12];
 

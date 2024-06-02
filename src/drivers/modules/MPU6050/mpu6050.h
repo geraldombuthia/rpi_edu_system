@@ -42,8 +42,8 @@
 #include <sys/types.h>
 #include <time.h>
 extern "C" {
-	#include <linux/i2c-dev.h>
-	#include <i2c/smbus.h>
+#include <linux/i2c-dev.h>
+#include <i2c/smbus.h>
 }
 #include <cmath>
 #include <thread>
@@ -55,33 +55,33 @@ extern "C" {
 
 //Select the appropriate settings
 #if GYRO_RANGE == 1
-	#define GYRO_SENS 65.5
-	#define GYRO_CONFIG 0b00001000
+#define GYRO_SENS 65.5
+#define GYRO_CONFIG 0b00001000
 #elif GYRO_RANGE == 2
-	#define GYRO_SENS 32.8
-	#define GYRO_CONFIG 0b00010000
+#define GYRO_SENS 32.8
+#define GYRO_CONFIG 0b00010000
 #elif GYRO_RANGE == 3
-	#define GYRO_SENS 16.4
-	#define GYRO_CONFIG 0b00011000
+#define GYRO_SENS 16.4
+#define GYRO_CONFIG 0b00011000
 #else //Otherwise, default to 0
-	#define GYRO_SENS 131.0
-	#define GYRO_CONFIG 0b00000000
+#define GYRO_SENS 131.0
+#define GYRO_CONFIG 0b00000000
 #endif
 #undef GYRO_RANGE
 
 
 #if ACCEL_RANGE == 1
-	#define ACCEL_SENS 8192.0
-	#define ACCEL_CONFIG 0b00001000
+#define ACCEL_SENS 8192.0
+#define ACCEL_CONFIG 0b00001000
 #elif ACCEL_RANGE == 2
-	#define ACCEL_SENS 4096.0
-	#define ACCEL_CONFIG 0b00010000
+#define ACCEL_SENS 4096.0
+#define ACCEL_CONFIG 0b00010000
 #elif ACCEL_RANGE == 3
-	#define ACCEL_SENS 2048.0
-	#define ACCEL_CONFIG 0b00011000
+#define ACCEL_SENS 2048.0
+#define ACCEL_CONFIG 0b00011000
 #else //Otherwise, default to 0
-	#define ACCEL_SENS 16384.0
-	#define ACCEL_CONFIG 0b00000000
+#define ACCEL_SENS 16384.0
+#define ACCEL_CONFIG 0b00000000
 #endif
 #undef ACCEL_RANGE
 
@@ -89,32 +89,32 @@ extern "C" {
 
 
 class MPU6050 {
-	private:
-		void _update();
+private:
+    void _update();
 
-		float _accel_angle[3];
-		float _gyro_angle[3];
-		float _angle[3]; //Store all angles (accel roll, accel pitch, accel yaw, gyro roll, gyro pitch, gyro yaw, comb roll, comb pitch comb yaw)
+    float _accel_angle[3];
+    float _gyro_angle[3];
+    float _angle[3]; //Store all angles (accel roll, accel pitch, accel yaw, gyro roll, gyro pitch, gyro yaw, comb roll, comb pitch comb yaw)
 
-		float ax, ay, az, gr, gp, gy; //Temporary storage variables used in _update()
+    float ax, ay, az, gr, gp, gy; //Temporary storage variables used in _update()
 
-		int MPU6050_addr;
-		int f_dev; //Device file
+    int MPU6050_addr;
+    int f_dev; //Device file
 
-		float dt; //Loop time (recalculated with each loop)
+    float dt; //Loop time (recalculated with each loop)
 
-		struct timespec start,end; //Create a time structure
+    struct timespec start,end; //Create a time structure
 
-		bool _first_run = 1; //Variable for whether to set gyro angle to acceleration angle in compFilter
-	public:
-		MPU6050(int8_t addr);
-		MPU6050(int8_t addr, bool run_update_thread);
-		void getAccelRaw(float *x, float *y, float *z);
-		void getGyroRaw(float *roll, float *pitch, float *yaw);
-		void getAccel(float *x, float *y, float *z);
-		void getGyro(float *roll, float *pitch, float *yaw);
-		void getOffsets(float *ax_off, float *ay_off, float *az_off, float *gr_off, float *gp_off, float *gy_off);
-		int getAngle(int axis, float *result);
-		bool calc_yaw;
+    bool _first_run = 1; //Variable for whether to set gyro angle to acceleration angle in compFilter
+public:
+    MPU6050(int8_t addr);
+    MPU6050(int8_t addr, bool run_update_thread);
+    void getAccelRaw(float *x, float *y, float *z);
+    void getGyroRaw(float *roll, float *pitch, float *yaw);
+    void getAccel(float *x, float *y, float *z);
+    void getGyro(float *roll, float *pitch, float *yaw);
+    void getOffsets(float *ax_off, float *ay_off, float *az_off, float *gr_off, float *gp_off, float *gy_off);
+    int getAngle(int axis, float *result);
+    bool calc_yaw;
 };
 

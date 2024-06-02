@@ -7,7 +7,7 @@ int32_t BME280::compensate_temp(int32_t adc_T) {
     int32_t var1, var2, T;
     var1 = ((((adc_T >> 3) - ((int32_t) dig_T1 << 1))) * ((int32_t) dig_T2)) >> 11;
     var2 = (((((adc_T >> 4) - ((int32_t) dig_T1)) * ((adc_T >> 4) - ((int32_t) dig_T1))) >> 12) * ((int32_t) dig_T3))
-            >> 14;
+           >> 14;
     t_fine = var1 + var2;
     T = (t_fine * 5 + 128) >> 8;
     return T;
@@ -37,9 +37,9 @@ uint32_t BME280::compensate_humidity(int32_t adc_H) {
     v_x1_u32r = (t_fine - ((int32_t) 76800));
     v_x1_u32r = (((((adc_H << 14) - (((int32_t) dig_H4) << 20) - (((int32_t) dig_H5) * v_x1_u32r)) +
                    ((int32_t) 16384)) >> 15) * (((((((v_x1_u32r * ((int32_t) dig_H6)) >> 10) * (((v_x1_u32r *
-                                                                                                  ((int32_t) dig_H3))
-            >> 11) + ((int32_t) 32768))) >> 10) + ((int32_t) 2097152)) *
-                                                 ((int32_t) dig_H2) + 8192) >> 14));
+                           ((int32_t) dig_H3))
+                           >> 11) + ((int32_t) 32768))) >> 10) + ((int32_t) 2097152)) *
+                           ((int32_t) dig_H2) + 8192) >> 14));
     v_x1_u32r = (v_x1_u32r - (((((v_x1_u32r >> 15) * (v_x1_u32r >> 15)) >> 7) * ((int32_t) dig_H1)) >> 4));
     v_x1_u32r = (v_x1_u32r < 0 ? 0 : v_x1_u32r);
     v_x1_u32r = (v_x1_u32r > 419430400 ? 419430400 : v_x1_u32r);
