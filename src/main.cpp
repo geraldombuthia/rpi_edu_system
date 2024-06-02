@@ -5,6 +5,12 @@
 #include "mcp3008.h"
 #include "hmc5883l.h"
 #include <wiringPi.h>
+#include "lv_drv_conf.h"
+#include "lv_conf.h"
+#include "lvgl/lvgl.h"
+#include "sdl/sdl.h"
+#include <SDL2/SDL.h>
+#include "ui/ui.h"
 
 #define MAXTIMINGS 85
 #define DHTPIN 3
@@ -13,6 +19,18 @@ int dht11_dat[5] = {0, 0, 0, 0, 0};
 double dht_temp;
 double dht_humidity;
 
+int gui_tick_thread(void* data) {
+    (void)data;
+
+    while(1) {
+        SDL_Delay(1);
+
+        lv_tick_inc(1); /* Tell LittelvGL that 1 milliseconds were elapsed */
+
+
+    }
+    return 0;
+}
 int read_dht11_dat()
 {
     uint8_t laststate = HIGH;
@@ -88,6 +106,32 @@ int main()
         printf("WirinPi setup failed\n");
 
     // Now you can access the measurements
+
+    sdl_init();
+    SDL_createThread(gui_tick_thread, "gui_tick_thread", NULL);
+
+    /*Create a display buffer*/
+    static lv_color_t buf[SDL_HOR_RES * SDL_VER_RES];
+    static lv_disp_draw_buf_t disp_draw_buf;
+    lv_disp_draw_buf_init(&disp_draw_buf, buf, NULL, SDL_HOR_RES * SDL_VER_RES);
+
+    /*Create a display*/
+    static lv_disp_drv_t disp_drv;
+    lv_disp_drv_init(&disp_drv); /*Basic initialization*/
+    disp_drv.draw_buf = &disp_draw_buf;
+    disp_drv.flush_cb = sdl_display_flush;
+    disp_drv.hor_res = SDL_HOR_RES;
+    disp_drv.ver_res = SDL_VER_RES;
+    lv_disp_drv_register(&disp_drv);
+
+    /* Add a mouse as input device */
+    static lv_indev_drv_t indev_drv;
+    lv_indev_drv_init(&indev_drv); /*Basic initialization*/
+    indev_drv.type = LV_INDEV_TYPE_POINTER;
+    indev_drv.read_cb = sdl_mouse_read;
+    lv_indev_drv_register(&indev_drv);
+
+    ui_init();
 
     while (1)
     {

@@ -1,8 +1,16 @@
 # ninja log v5
-0	189	1714916335452218237	CMakeFiles/my_executable.dir/src/drivers/modules/DHT11/dht11.cpp.o	8d7d29690d73b322
-1	760	1714916336024217194	CMakeFiles/my_executable.dir/src/drivers/modules/HMC5883L/hmc5883l.cpp.o	d77108f6affcfe48
-2	1651	1714916336916215566	CMakeFiles/my_executable.dir/src/drivers/modules/MPU6050/mpu6050.cpp.o	da46c9a22d73739d
-1	866	1714916336128217004	CMakeFiles/my_executable.dir/src/drivers/modules/MCP3008/mcp3008.cpp.o	e94dfce721876636
-0	871	1714916336132216997	CMakeFiles/my_executable.dir/src/drivers/modules/BME280/bme280.cpp.o	cc29804093807438
-3	1469	1714916336732215902	CMakeFiles/my_executable.dir/src/main.cpp.o	4e02adb04005d3ce
-1651	1799	1714916337060215303	my_executable	778b33bdc100a7e4
+2	42	1717339052824769306	CMakeFiles/my_executable.dir/src/drivers/modules/DHT11/dht11.cpp.o	e08fa099f1b16de9
+4	421	1717339293873318130	CMakeFiles/Edusat.dir/src/drivers/modules/BME280/bme280.cpp.o	2c0745bbb1e1df48
+2	359	1717339053144776188	CMakeFiles/my_executable.dir/src/drivers/modules/HMC5883L/hmc5883l.cpp.o	591493a45cc0c47f
+3	785	1717339053568785307	CMakeFiles/my_executable.dir/src/drivers/modules/MPU6050/mpu6050.cpp.o	28576e548030aed8
+2	426	1717339053208777565	CMakeFiles/my_executable.dir/src/drivers/modules/BME280/bme280.cpp.o	cd628670bcbd6b7e
+5	757	1717339294209303646	CMakeFiles/Edusat.dir/src/drivers/modules/MPU6050/mpu6050.cpp.o	28628aac212ac842
+2	508	1717339053292779371	CMakeFiles/my_executable.dir/src/drivers/modules/MCP3008/mcp3008.cpp.o	b99aba7d24d120ba
+4	44	1717339293497334363	CMakeFiles/Edusat.dir/src/drivers/modules/DHT11/dht11.cpp.o	6a1d500294ea08cf
+4	399	1717339293853318994	CMakeFiles/Edusat.dir/src/drivers/modules/HMC5883L/hmc5883l.cpp.o	4cbc28004dd2bc32
+4	479	1717339293933315540	CMakeFiles/Edusat.dir/src/drivers/modules/MCP3008/mcp3008.cpp.o	a694cbe635c5c7d7
+5	28	1717339348591120167	CMakeFiles/Edusat.dir/src/drivers/modules/DHT11/dht11.cpp.o	b77511e93397c7da
+6	404	1717339348971105987	CMakeFiles/Edusat.dir/src/drivers/modules/HMC5883L/hmc5883l.cpp.o	2aba34ab6ebfbe2e
+5	434	1717339348999104942	CMakeFiles/Edusat.dir/src/drivers/modules/BME280/bme280.cpp.o	e0b3e00418fa3023
+6	475	1717339349043103303	CMakeFiles/Edusat.dir/src/drivers/modules/MCP3008/mcp3008.cpp.o	da70d8ac17028383
+6	812	1717339349379090799	CMakeFiles/Edusat.dir/src/drivers/modules/MPU6050/mpu6050.cpp.o	6c27f61df431b52e
