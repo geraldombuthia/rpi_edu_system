@@ -64,13 +64,24 @@ sudo apt-get install i2c-tools libi2c-dev
 ```
 #### Install LVGL
 ```
-git clone https://github.com/lvgl/lvgl.git
+git clone https://github.com/lvgl/lvgl.git // 
 
 cd lvgl
 
 git fetch origin v8.3.6
 
 git checkout tags/v8.3.6
+
+```
+OR 
+
+```
+git clone --branch v8.3.6 --depth 1 https://github.com/lvgl/lvgl.git lvgl
+
+git submodule add https://github.com/lvgl/lvgl.git lvgl
+
+git submodule update --init --recursive
+
 
 ```
 ### BUILD
