@@ -5,10 +5,7 @@
 #include "mcp3008.h"
 #include "hmc5883l.h"
 #include <wiringPi.h>
-#include "lv_drv_conf.h"
-#include "lv_conf.h"
-#include "lvgl/lvgl.h"
-#include "sdl/sdl.h"
+#include "lvgl.h"
 #include <SDL2/SDL.h>
 #include "ui/ui.h"
 
