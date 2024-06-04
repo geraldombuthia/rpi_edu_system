@@ -12,15 +12,15 @@
 */
 
 class GUI {
+ /**
+   * Constructor
+  */
+ GUI() = default;
+ /**
+  * Destructor
+ */
+ ~GUI() = default;
 public:
-    /**
-     * Constructor
-    */
-    GUI();
-    /**
-     * Destructor
-    */
-    ~GUI();
     /**
      * @brief Initialize the GUI
      * @return 0 if successful, -1 otherwise
@@ -40,6 +40,7 @@ public:
     int update();
 
 private:
-}
+
+};
 
 #endif // GUI_H
