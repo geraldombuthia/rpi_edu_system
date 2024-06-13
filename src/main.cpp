@@ -28,6 +28,7 @@ int gui_tick_thread(void* data) {
     }
     return 0;
 }
+
 int read_dht11_dat()
 {
     uint8_t laststate = HIGH;
