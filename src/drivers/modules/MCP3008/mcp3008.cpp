@@ -11,6 +11,17 @@ MCP3008::MCP3008(int channel, int speed) : spi_channel(channel), spi_speed(speed
     {
         throw std::runtime_error("Failed to setup SPI");
     }
+    // Set the SPI mode to mode 0
+    int fd = wiringPiSPIGetFd(spi_channel);
+
+    if (fd < 0) {
+        throw std::runtime_error("Failed to get SPI file descriptor");
+    }
+
+    uint8_t mode = SPI_CHANNEL;
+    if (ioctl(fd, SPI_IOC_WR_MODE, &mode) < 0) {
+        throw std::runtime_error("Failed to set SPI mode");
+    }
 }
 
 int MCP3008::readADC(int channel)

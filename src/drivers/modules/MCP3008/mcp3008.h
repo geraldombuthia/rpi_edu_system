@@ -1,6 +1,11 @@
 #include <iostream>
 #include <wiringPi.h>
 #include <wiringPiSPI.h>
+#include "mcp3008.h"
+#include <stdexcept>
+#include <iostream>
+#include <sys/ioctl.h>
+#include <linux/spi/spidev.h>
 
 #define SPI_CHANNEL 0
 #define SPI_SPEED   1000000  // 1 MHz
