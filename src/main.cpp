@@ -140,7 +140,7 @@ int main()
     {
         for (int i=0; i < 4; i++) {
             wart = analogRead(100);
-            printf("Channel %d: %d\n", i, wart);
+            printf("Channel->05%d: %d\n", i, wart);
         }
         float temperature = measurements.temperature; // in degrees Celsius
         float pressure = measurements.pressure;       // in hPa
