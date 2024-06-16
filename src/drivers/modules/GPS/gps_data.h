@@ -37,5 +37,5 @@ public:
     gps_state_t gps_location(loc_t *data);
 
 
-}
+};
 #endif // GPS_DATA_H
