@@ -4,6 +4,7 @@
 #include "bme280.h"
 #include "mcp3008.h"
 #include "hmc5883l.h"
+#include "gps_data.h"
 #include <wiringPi.h>
 #include "lvgl.h"
 #include <SDL2/SDL.h>
@@ -94,11 +95,17 @@ int main()
     // Create an instance of the MCP3008 class
     MCP3008 adc;
 
+    // Create an instance of the HMC5883L class
     HMC5883L hmc5883l;
 
+    // Create an instance of the GPSData class
+    GPSData gps_data;
 
-    // Create an instance of the HMC5883L class
-    // HMC5883L compass = NULL;
+    loc_t location;
+
+    gps_data.init();
+
+    // Initialize
 
     if (wiringPiSetup() == -1)
         // exit(1);
@@ -144,6 +151,8 @@ int main()
 
         adc.readAllChannels();
 
+        gps_data.gps_location(&location);
+
         // Initialize
         if (hmc5883l_init(&hmc5883l) != HMC5883L_OKAY)
         {
@@ -178,6 +187,8 @@ int main()
         printf("Humidity: %.1f%%\nTemperature: %.1f C\n", dht_humidity, dht_temp);
 
         printf("Temperature: %.2f C Pressure: %.2f hPa Humidity: %.2f %% Altitude: %.2f m\n\n", temperature, pressure, humidity, altitude);
+
+        printf("GPS Location: Latitude: %f Longitude: %f\n", location.latitude, location.longitude);
 
         delay(1000); // To be removed later on
     }
