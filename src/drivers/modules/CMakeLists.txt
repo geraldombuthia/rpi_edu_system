@@ -1,5 +1,5 @@
 set(LIB_NAME Drv_Modules)
-add_library(${LIB_NAME} STATIC)
+add_library(${LIB_NAME} STATIC )
 
 target_include_directories(${LIB_NAME} PUBLIC
         MPU6050/
@@ -18,5 +18,5 @@ target_sources(${LIB_NAME} PRIVATE
 )
 
 target_link_libraries(${LIB_NAME} PUBLIC
-        wiringPi lgpio i2c gps m
+        wiringPi lgpio i2c m /usr/lib/libgps.a
 )
