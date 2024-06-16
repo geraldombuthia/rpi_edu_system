@@ -14,6 +14,7 @@ target_link_libraries(${APP_TARGET}
         PRIVATE
         GUI
         Drv_Modules
+        gps
         
 )
 
