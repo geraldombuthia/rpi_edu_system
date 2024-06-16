@@ -105,6 +105,7 @@ int main()
 
     gps_data.init();
 
+    delay(1000);
     // Initialize
 
     if (wiringPiSetup() == -1)
