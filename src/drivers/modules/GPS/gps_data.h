@@ -1,5 +1,5 @@
-#ifndef MCP3008_H
-#define MCP3008_H
+#ifndef GPS_DATA_H
+#define GPS_DATA_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -38,3 +38,4 @@ public:
 
 
 }
+#endif // GPS_DATA_H

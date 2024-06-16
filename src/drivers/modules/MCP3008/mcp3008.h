@@ -4,7 +4,7 @@
 #include <iostream>
 #include <wiringPi.h>
 #include <wiringPiSPI.h>
-#include "mcp3008.h"
+// #include "mcp3008.h"
 #include <stdexcept>
 #include <iostream>
 #include <sys/ioctl.h>
