@@ -4,7 +4,7 @@ add_executable(${APP_TARGET} # Only add platform independent sources
         gui/ui/ui_helpers.c
         gui/ui/ui.h
         gui/ui/ui.c
-        main.cpp
+        # testMain.cpp
         #        main.cpp # TODO - write platform independent main
 )
 

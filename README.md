@@ -84,6 +84,15 @@ git submodule update --init --recursive
 
 
 ```
+
+#### Install GPS driver ->libgps
+```
+git clone https://github.com/joyalraju/libgps.git
+
+make
+
+sudo make install
+```
 ### BUILD
 ```
 mkdir build
