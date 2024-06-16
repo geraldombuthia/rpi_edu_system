@@ -119,7 +119,7 @@ int main()
     // Now you can access the measurements
 
     sdl_init();
-    SDL_createThread(gui_tick_thread, "gui_tick_thread", NULL);
+    SDL_CreateThread(gui_tick_thread, "gui_tick_thread", NULL);
 
     /*Create a display buffer*/
     static lv_color_t buf[SDL_HOR_RES * SDL_VER_RES];
