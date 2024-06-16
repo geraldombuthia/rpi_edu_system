@@ -18,5 +18,5 @@ target_sources(${LIB_NAME} PRIVATE
 )
 
 target_link_libraries(${LIB_NAME} PUBLIC
-        wiringPi lgpio lgps lm
+        wiringPi lgpio gps m
 )
