@@ -1,3 +1,5 @@
+#pragma once
+
 //-------------------------------MPU6050 Accelerometer and Gyroscope C++ library-----------------------------
 //Copyright (c) 2019, Alex Mous
 //Licensed under the CC BY-NC SA 4.0
