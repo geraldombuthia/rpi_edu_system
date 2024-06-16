@@ -1,4 +1,5 @@
-#pragma once
+#ifndef MCP3008_H
+#define MCP3008_H
 
 #include <iostream>
 #include <wiringPi.h>
@@ -25,3 +26,4 @@ private:
     int spi_speed;
 };
 
+#endif // MCP3008_H
