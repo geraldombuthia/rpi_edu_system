@@ -8,7 +8,6 @@
 #include "lvgl.h"
 #include <SDL2/SDL.h>
 #include "ui/ui.h"
-#include "mcp3004.h"
 
 #define MAXTIMINGS 85
 #define DHTPIN 3
@@ -84,9 +83,6 @@ int main()
     float roll, pitch, yaw;
     float ax, ay, az;
 
-    int wart;
-    WiringPiSetupGpio();
-    mcp3004Setup(100, 0);
     // Create an instance of the BME280 class
     MPU6050 mpu6050(0x68, true);
 
@@ -138,10 +134,6 @@ int main()
 
     while (1)
     {
-        for (int i=0; i < 4; i++) {
-            wart = analogRead(100);
-            printf("Channel->05%d: %d\n", i, wart);
-        }
         float temperature = measurements.temperature; // in degrees Celsius
         float pressure = measurements.pressure;       // in hPa
         float humidity = measurements.humidity;       // in %

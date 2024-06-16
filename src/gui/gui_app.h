@@ -12,14 +12,14 @@
 */
 
 class GUI {
- /**
-   * Constructor
-  */
- GUI() = default;
- /**
-  * Destructor
- */
- ~GUI() = default;
+    /**
+      * Constructor
+     */
+    GUI() = default;
+    /**
+     * Destructor
+    */
+    ~GUI() = default;
 public:
     /**
      * @brief Initialize the GUI

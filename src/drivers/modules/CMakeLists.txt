@@ -6,6 +6,7 @@ target_include_directories(${LIB_NAME} PUBLIC
         MCP3008/
         HMC5883L/
         BME280/
+        GPS/
 )
 
 target_sources(${LIB_NAME} PRIVATE
@@ -13,8 +14,9 @@ target_sources(${LIB_NAME} PRIVATE
         MCP3008/mcp3008.cpp
         HMC5883L/hmc5883l.cpp
         BME280/bme280.cpp
+        GPS/gps_data.cpp
 )
 
 target_link_libraries(${LIB_NAME} PUBLIC
-        wiringPi lgpio
+        wiringPi lgpio lgps lm
 )
