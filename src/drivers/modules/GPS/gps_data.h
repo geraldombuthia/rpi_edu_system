@@ -6,7 +6,7 @@
 #include <gps.h>
 
 
-enum gps_state {
+typedef enum gps_state {
     GPS_STATE_INIT,
     GPS_STATE_READ,
     GPS_STATE_ERROR
