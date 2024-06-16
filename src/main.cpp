@@ -99,7 +99,7 @@ int main()
     HMC5883L hmc5883l;
 
     // Create an instance of the GPSData class
-    GPSData gps_data;
+    GPS gps_data;
 
     loc_t location;
 
