@@ -191,6 +191,8 @@ int main()
 
         printf("GPS Location: Latitude: %f Longitude: %f\n", location.latitude, location.longitude);
 
+        fflush(stdout);
+
         delay(1000); // To be removed later on
     }
 }
