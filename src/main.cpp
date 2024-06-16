@@ -156,7 +156,7 @@ int main()
 
         adc.readAllChannels();
 
-        gps_data.gps_location(&location);
+        gps_data.location(&location);
 
         // Initialize
         if (hmc5883l_init(&hmc5883l) != HMC5883L_OKAY)

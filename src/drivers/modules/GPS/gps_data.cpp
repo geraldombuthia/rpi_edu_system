@@ -15,7 +15,7 @@ gps_state_t GPS::init() {
     return GPS_STATE_INIT;
 }
 
-gps_state_t GPS::gps_location(loc_t *data) {
+gps_state_t GPS::location(loc_t *data) {
     gps_location(data);
 
     return GPS_STATE_READ;

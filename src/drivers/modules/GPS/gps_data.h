@@ -34,7 +34,7 @@ public:
      * @param data Contains the location data
      * @return loc_t
      */
-    gps_state_t gps_location(loc_t *data);
+    gps_state_t location(loc_t *data);
 
 
 };
