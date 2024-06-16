@@ -6,9 +6,13 @@
 #include "hmc5883l.h"
 #include "gps_data.h"
 #include <wiringPi.h>
-#include "lvgl.h"
-#include <SDL2/SDL.h>
 #include "ui/ui.h"
+
+#include <SDL2/SDL.h>
+#include "lv_drv_conf.h"
+#include "lv_conf.h"
+#include "lvgl.h"
+#include "sdl/sdl.h"
 
 #define MAXTIMINGS 85
 #define DHTPIN 3
