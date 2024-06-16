@@ -14,10 +14,11 @@ target_link_libraries(${APP_TARGET}
         GUI
 )
 
-if(IS_RASPBERRY_PI)
-    add_subdirectory(drivers/modules)
-    target_link_libraries(${APP_TARGET}
-            PRIVATE
-            Drv_Modules
-    )
-endif ()
+
+# if(IS_RASPBERRY_PI)
+#     add_subdirectory(drivers/modules)
+#     target_link_libraries(${APP_TARGET}
+#             PRIVATE
+#             Drv_Modules
+#     )
+# endif ()
