@@ -389,7 +389,7 @@ void ui_Screen1_screen_init(void)
     lv_obj_set_flex_align(ui_MagentometerArc, LV_FLEX_ALIGN_CENTER, LV_FLEX_ALIGN_START, LV_FLEX_ALIGN_CENTER);
     lv_arc_set_range(ui_MagentometerArc, 0, 360);
     lv_arc_set_value(ui_MagentometerArc, 180);
-    lv_arc_set_mode(ui_MagentometerArc, LV_ARC_MODE_SYMMETRICAL);
+    lv_arc_set_mode(ui_MagentometerArc, LV_ARC_MODE_REVERSE);
 
     lv_obj_set_style_arc_color(ui_MagentometerArc, lv_color_hex(0x04B25F), LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_arc_opa(ui_MagentometerArc, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);

@@ -149,7 +149,7 @@ int main()
     while (1)
     {
         lv_task_handler();
-        
+
         float temperature = measurements.temperature; // in degrees Celsius
         float pressure = measurements.pressure;       // in hPa
         float humidity = measurements.humidity;       // in %
@@ -176,6 +176,31 @@ int main()
         hmc5883l_read(&hmc5883l);
 
         read_dht11_dat();
+
+        lv_label_set_text(ui_AltitudeValueLabel, "10,000");
+        lv_label_set_text(ui_AltitudeUnitLabel, "m");
+        lv_label_set_text(ui_PressureValueLabel, "23,800");
+        lv_label_set_text(ui_PressureUnitLabel, "Pa");
+        lv_label_set_text(ui_TempValueLabel, std::to_string(dht_temp).c_str());
+        lv_label_set_text(ui_TempUnitLabel, " °C");
+        lv_label_set_text(ui_HumidityValueLabel, std::to_string(dht_humidity).c_str());
+        lv_label_set_text(ui_HumidityUnitLabel, "%");
+        lv_label_set_text(ui_MagnetometerValueLabel, "80");
+        lv_label_set_text(ui_MagentometerUnitLabel, "%");
+        lv_label_set_text(ui_LatitudeValueLabel, std::to_string(location.latitude).c_str());
+        lv_label_set_text(ui_LatitudeUnitLabel, "lat");
+        lv_label_set_text(ui_LongValueLabel, std::to_string(location.longitude).c_str());
+        lv_label_set_text(ui_LongUnitLabel, "lon");
+        // lv_label_set_text(ui_UVValueLabel, std::to_string(adc.readChannel(0)).c_str());
+        lv_label_set_text(ui_UVUnitLabel, "lux");
+        lv_label_set_text(ui_VoltageValueLabel, "5.0");
+        lv_label_set_text(ui_VoltageUnitLabel, "V");
+        lv_label_set_text(ui_CurrentValueLabel, "5.0");
+        lv_label_set_text(ui_CurrentUnitLabel, "A");
+        lv_label_set_text(ui_AltitudeValueLabel1, "10,000");
+        lv_label_set_text(ui_AltitudeUnitLabel1, "m");
+        lv_label_set_text(ui_PressureValueLabel1, "23,800");
+        lv_label_set_text(ui_PressureUnitLabel1, "Pa");
 
         // Print results
         printf("X: %f Y:%f Z:%f\n",
