@@ -1,6 +1,9 @@
 #ifndef _SERIAL_H_
 #define _SERIAL_H_
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include <inttypes.h>
 
 #ifndef PORTNAME
@@ -12,5 +15,6 @@ void serial_config(void);
 void serial_println(const char *, int);
 void serial_readln(char *, int);
 void serial_close(void);
-
+#ifdef __cplusplus
+}   
 #endif

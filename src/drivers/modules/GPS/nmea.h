@@ -1,6 +1,8 @@
 #ifndef _NMEA_H_
 #define _NMEA_H_
-
+#ifdef __cplusplus
+extern "C" {
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <inttypes.h>
@@ -49,5 +51,7 @@ uint8_t nmea_valid_checksum(const char *);
 void nmea_parse_gpgga(char *, gpgga_t *);
 void nmea_parse_gprmc(char *, gprmc_t *);
 
+#ifdef __cplusplus
+}
 #endif
 

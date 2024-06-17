@@ -21,5 +21,5 @@ target_sources(${LIB_NAME} PRIVATE
 )
 
 target_link_libraries(${LIB_NAME} PUBLIC
-        wiringPi lgpio i2c m /usr/lib/libgps.a
+        wiringPi lgpio i2c m
 )
