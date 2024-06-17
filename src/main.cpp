@@ -156,7 +156,9 @@ int main()
 
         adc.readAllChannels();
 
-        gps_data.location(&location);
+        if (gps_data.location(&location) != gps_state_t::GPS_STATE_READ) {
+            printf("Error reading GPS data\n");
+        }
 
         // Initialize
         if (hmc5883l_init(&hmc5883l) != HMC5883L_OKAY)
