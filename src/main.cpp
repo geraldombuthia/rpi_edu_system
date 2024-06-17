@@ -148,6 +148,8 @@ int main()
 
     while (1)
     {
+        lv_task_handler();
+        
         float temperature = measurements.temperature; // in degrees Celsius
         float pressure = measurements.pressure;       // in hPa
         float humidity = measurements.humidity;       // in %
