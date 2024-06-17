@@ -15,6 +15,9 @@ target_sources(${LIB_NAME} PRIVATE
         HMC5883L/hmc5883l.cpp
         BME280/bme280.cpp
         GPS/gps_data.cpp
+        GPS/gps.c
+        GPS/nmea.c
+        GPS/serial.c
 )
 
 target_link_libraries(${LIB_NAME} PUBLIC
