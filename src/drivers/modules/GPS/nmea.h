@@ -55,3 +55,5 @@ void nmea_parse_gprmc(char *, gprmc_t *);
 }
 #endif
 
+#endif // _NMEA_H_
+

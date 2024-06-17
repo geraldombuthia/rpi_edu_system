@@ -18,3 +18,5 @@ void serial_close(void);
 #ifdef __cplusplus
 }   
 #endif
+
+#endif // _SERIAL_H_s

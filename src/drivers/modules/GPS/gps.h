@@ -34,3 +34,6 @@ double gps_deg_dec(double);
 #ifdef __cplusplus
 }
 #endif
+
+
+#endif // _GPS_H_
