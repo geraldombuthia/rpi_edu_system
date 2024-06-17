@@ -117,7 +117,7 @@ int main()
         printf("WirinPi setup failed\n");
 
     // Now you can access the measurements
-
+    lv_init();
     sdl_init();
     SDL_CreateThread(gui_tick_thread, "gui_tick_thread", NULL);
 
