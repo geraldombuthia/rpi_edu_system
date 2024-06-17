@@ -188,15 +188,17 @@ int main()
         lv_label_set_text(ui_AltitudeUnitLabel, "m");
         lv_label_set_text(ui_PressureValueLabel, "23,800");
         lv_label_set_text(ui_PressureUnitLabel, "Pa");
+        lv_arc_set_value(ui_TempArc, dht_temp);
         lv_label_set_text(ui_TempValueLabel, format_double_to_char(dht_temp));
         lv_label_set_text(ui_TempUnitLabel, " °C");
+        lv_arc_set_value(ui_HumidtyArc, dht_humidity);
         lv_label_set_text(ui_HumidityValueLabel, format_double_to_char(dht_humidity));
         lv_label_set_text(ui_HumidityUnitLabel, "%");
 
         lv_arc_set_value(ui_MagentometerArc, hmc5883l._data.orientation_deg);
         lv_label_set_text(ui_MagnetometerValueLabel, format_double_to_char(hmc5883l._data.orientation_deg));
         lv_label_set_text(ui_MagentometerUnitLabel, "°");
-        
+
         lv_label_set_text(ui_LatitudeValueLabel, format_double_to_char(location.latitude));
         lv_label_set_text(ui_LatitudeUnitLabel, "lat");
         lv_label_set_text(ui_LongValueLabel, format_double_to_char(location.longitude));
