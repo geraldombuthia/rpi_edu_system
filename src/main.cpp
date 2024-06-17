@@ -4,7 +4,7 @@
 #include "bme280.h"
 #include "mcp3008.h"
 #include "hmc5883l.h"
-#include "gps_data.h"
+// #include "gps_data.h"
 #include <wiringPi.h>
 #include "ui/ui.h"
 
@@ -13,6 +13,7 @@
 #include "lv_conf.h"
 #include "lvgl.h"
 #include "sdl/sdl.h"
+#include  "gps.h"
 
 #define MAXTIMINGS 85
 #define DHTPIN 3
@@ -103,11 +104,12 @@ int main()
     HMC5883L hmc5883l;
 
     // Create an instance of the GPSData class
-    GPS gps_data;
+    // GPS gps_data;
 
     loc_t location;
 
-    gps_data.init();
+    // gps_data.init();
+    gps_init();
 
     delay(1000);
     // Initialize
@@ -156,9 +158,10 @@ int main()
 
         adc.readAllChannels();
 
-        if (gps_data.location(&location) != gps_state_t::GPS_STATE_READ) {
-            printf("Error reading GPS data\n");
-        }
+        // if (gps_data.location(&location) != gps_state_t::GPS_STATE_READ) {
+        //     printf("Error reading GPS data\n");
+        // }
+        gps_location(&location);
 
         // Initialize
         if (hmc5883l_init(&hmc5883l) != HMC5883L_OKAY)
