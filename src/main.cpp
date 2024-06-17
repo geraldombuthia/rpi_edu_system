@@ -84,6 +84,13 @@ int read_dht11_dat()
         return (0);
 }
 
+char * format_double_to_char(double value)
+{
+    char buffer[20];
+    snprintf(buffer, 20, "%.2f", value);
+    return buffer;
+}
+
 int main()
 {
     float roll, pitch, yaw;
@@ -181,15 +188,18 @@ int main()
         lv_label_set_text(ui_AltitudeUnitLabel, "m");
         lv_label_set_text(ui_PressureValueLabel, "23,800");
         lv_label_set_text(ui_PressureUnitLabel, "Pa");
-        lv_label_set_text(ui_TempValueLabel, std::to_string(dht_temp).c_str());
+        lv_label_set_text(ui_TempValueLabel, format_double_to_char(dht_temp));
         lv_label_set_text(ui_TempUnitLabel, " °C");
-        lv_label_set_text(ui_HumidityValueLabel, std::to_string(dht_humidity).c_str());
+        lv_label_set_text(ui_HumidityValueLabel, format_double_to_char(dht_humidity));
         lv_label_set_text(ui_HumidityUnitLabel, "%");
-        lv_label_set_text(ui_MagnetometerValueLabel, "80");
-        lv_label_set_text(ui_MagentometerUnitLabel, "%");
-        lv_label_set_text(ui_LatitudeValueLabel, std::to_string(location.latitude).c_str());
+
+        lv_arc_set_value(ui_MagentometerArc, hmc5883l._data.orientation_deg);
+        lv_label_set_text(ui_MagnetometerValueLabel, format_double_to_char(hmc5883l._data.orientation_deg));
+        lv_label_set_text(ui_MagentometerUnitLabel, "°");
+        
+        lv_label_set_text(ui_LatitudeValueLabel, format_double_to_char(location.latitude));
         lv_label_set_text(ui_LatitudeUnitLabel, "lat");
-        lv_label_set_text(ui_LongValueLabel, std::to_string(location.longitude).c_str());
+        lv_label_set_text(ui_LongValueLabel, format_double_to_char(location.longitude));
         lv_label_set_text(ui_LongUnitLabel, "lon");
         // lv_label_set_text(ui_UVValueLabel, std::to_string(adc.readChannel(0)).c_str());
         lv_label_set_text(ui_UVUnitLabel, "lux");
