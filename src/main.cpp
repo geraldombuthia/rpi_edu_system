@@ -161,7 +161,7 @@ int main()
         // if (gps_data.location(&location) != gps_state_t::GPS_STATE_READ) {
         //     printf("Error reading GPS data\n");
         // }
-        gps_location(&location);
+        // gps_location(&location);
 
         // Initialize
         if (hmc5883l_init(&hmc5883l) != HMC5883L_OKAY)
