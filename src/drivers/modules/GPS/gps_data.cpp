@@ -2,11 +2,11 @@
 
 
 GPS::GPS() {
-    
+
 };
 
 GPS::~GPS() {
-    
+
 };
 
 gps_state_t GPS::init() {

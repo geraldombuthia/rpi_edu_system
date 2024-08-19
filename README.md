@@ -19,6 +19,7 @@ Select Interface Options > I2C > select yes to enable > press okay to exit
 
 ### Update
 `sudo apt update`
+
 `sudo apt upgrade`
 
 ### Install Environment

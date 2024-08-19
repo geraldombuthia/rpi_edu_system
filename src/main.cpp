@@ -1,5 +1,6 @@
 #include <cstddef>
 #include <cstdio>
+#include <string>
 #include "mpu6050.h"
 #include "bme280.h"
 #include "mcp3008.h"
@@ -84,12 +85,12 @@ int read_dht11_dat()
         return (0);
 }
 
-char * format_double_to_char(double value)
-{
-    char buffer[20];
-    snprintf(buffer, 20, "%.2f", value);
-    return buffer;
-}
+// char * double value
+// {
+//     char buffer[20];
+//     snprintf(buffer, sizeof(buffer), "%.2f", value);
+//     return std::string(buffer);
+// }
 
 int main()
 {
@@ -101,8 +102,6 @@ int main()
 
     // Create an instance of the BME280 class
     BME280 sensor(0x76);
-    // Call the measure method to get the measurements
-    BME280::Measurement_t measurements = sensor.measure();
 
     // Create an instance of the MCP3008 class
     MCP3008 adc;
@@ -113,7 +112,13 @@ int main()
     // Create an instance of the GPSData class
     // GPS gps_data;
 
-    loc_t location;
+    loc_t location = {
+        .latitude = 0.0,
+        .longitude = 0.0,
+        .speed = 0.0,
+        .altitude = 0.0,
+        .course = 0.0,
+    };
 
     // gps_data.init();
     gps_init();
@@ -156,11 +161,14 @@ int main()
     while (1)
     {
         lv_task_handler();
-
+        
+        // Call the measure method to get the measurements
+        BME280::Measurement_t measurements = sensor.measure();
         float temperature = measurements.temperature; // in degrees Celsius
         float pressure = measurements.pressure;       // in hPa
         float humidity = measurements.humidity;       // in %
         float altitude = measurements.altitude;       // in meters
+
 
         mpu6050.getGyro(&roll, &pitch, &yaw);
         mpu6050.getAccel(&ax, &ay, &az);
@@ -170,7 +178,7 @@ int main()
         // if (gps_data.location(&location) != gps_state_t::GPS_STATE_READ) {
         //     printf("Error reading GPS data\n");
         // }
-        // gps_location(&location);
+        // gps_location(&location); // Commented out as it blocks the code
 
         // Initialize
         if (hmc5883l_init(&hmc5883l) != HMC5883L_OKAY)
@@ -184,24 +192,26 @@ int main()
 
         read_dht11_dat();
 
-        lv_label_set_text(ui_AltitudeValueLabel, "10,000");
+        // BME280 data
+        lv_label_set_text_fmt(ui_AltitudeValueLabel, "%d",(int)measurements.altitude);
         lv_label_set_text(ui_AltitudeUnitLabel, "m");
-        lv_label_set_text(ui_PressureValueLabel, "23,800");
+        lv_label_set_text_fmt(ui_PressureValueLabel, "%d",(int) measurements.pressure);
         lv_label_set_text(ui_PressureUnitLabel, "Pa");
+
         lv_arc_set_value(ui_TempArc, dht_temp);
-        lv_label_set_text(ui_TempValueLabel, format_double_to_char(dht_temp));
+        lv_label_set_text_fmt(ui_TempValueLabel, "%d",(int)dht_temp);
         lv_label_set_text(ui_TempUnitLabel, " °C");
         lv_arc_set_value(ui_HumidtyArc, dht_humidity);
-        lv_label_set_text(ui_HumidityValueLabel, format_double_to_char(dht_humidity));
+        lv_label_set_text_fmt(ui_HumidityValueLabel, "%d",(int)dht_humidity);
         lv_label_set_text(ui_HumidityUnitLabel, "%");
 
         lv_arc_set_value(ui_MagentometerArc, hmc5883l._data.orientation_deg);
-        lv_label_set_text(ui_MagnetometerValueLabel, format_double_to_char(hmc5883l._data.orientation_deg));
+        lv_label_set_text_fmt(ui_MagnetometerValueLabel, "%d",(int)hmc5883l._data.orientation_deg);
         lv_label_set_text(ui_MagentometerUnitLabel, "°");
 
-        lv_label_set_text(ui_LatitudeValueLabel, format_double_to_char(location.latitude));
+        lv_label_set_text_fmt(ui_LatitudeValueLabel, "%f",location.latitude);
         lv_label_set_text(ui_LatitudeUnitLabel, "lat");
-        lv_label_set_text(ui_LongValueLabel, format_double_to_char(location.longitude));
+        lv_label_set_text_fmt(ui_LongValueLabel, "%.6f",location.longitude);
         lv_label_set_text(ui_LongUnitLabel, "lon");
         // lv_label_set_text(ui_UVValueLabel, std::to_string(adc.readChannel(0)).c_str());
         lv_label_set_text(ui_UVUnitLabel, "lux");

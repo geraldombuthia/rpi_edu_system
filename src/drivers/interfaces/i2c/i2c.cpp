@@ -32,7 +32,7 @@
 
 //     if (write(file, buf, 1) != 1)
 //     {
-        printf("Error writing to i2c slave");
+printf("Error writing to i2c slave");
 //         exit(1);
 //     }
 //     if(read(file, buf, 3) != 3)
